@@ -13,6 +13,9 @@ const express = require("express")
     min_temp:0,
     max_temp:0,
     main:"",
+    dt:0,
+    sunrise:0,
+    sunset:0,
  };
  const asyncfunction=async (city)=>{
     const key="5b3f556adb4a2ae3aec7659b3cb25f41";
@@ -31,6 +34,9 @@ const express = require("express")
       projectData.min_temp=data1.main.temp_min;
       projectData.max_temp=data1.main.temp_max;
       projectData.main=data1.weather[0].main;
+      projectData.dt=data1.dt;
+      projectData.sunrise=data1.sys.sunrise;
+      projectData.sunset=data1.sys.sunset;
       return projectData;
     }
     catch(error){
@@ -53,16 +59,17 @@ const express = require("express")
         min_temp:req.body.min_temp,
         max_temp:req.body.max_temp,
         main:req.body.main,
+        dt:req.body.dt,
+        sunrise:req.body.sunrise,
+        sunset:req.body.sunset,
         feeling:req.body.feeling,
+
     }
     weatherData.push(newEntry);
     res.send(weatherData);
-    console.log(weatherData);
-
  }
  const updatedata= (req,res)=>{
     res.send(weatherData);
-    console.log(weatherData);
  }
 
  

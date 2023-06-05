@@ -11,6 +11,9 @@ function performaction(e){
     min_temp:data.min_temp,
     max_temp:data.max_temp,
     main:data.main,
+    dt:data.dt,
+    sunrise:data.sunrise,
+    sunset:data.sunset,
     feeling:feeling,
       });
    } )
@@ -55,6 +58,18 @@ const sendweatherdata = async(url='',data={})=>{
         console.log("error",error);
       }
     }
+    const isDayTime=(dt,sunrise,sunset)=>{
+        const currentTimestamp = dt; // Assuming `data` is the fetched weather data object
+  const sunriseTimestamp = sunrise;
+  const sunsetTimestamp = sunset;
+
+  // Convert timestamps to milliseconds
+  const currentDateTime = new Date(currentTimestamp * 1000);
+  const sunriseDateTime = new Date(sunriseTimestamp * 1000);
+  const sunsetDateTime = new Date(sunsetTimestamp * 1000);
+
+  return currentDateTime > sunriseDateTime && currentDateTime < sunsetDateTime;
+    }
 const updateUI=async ()=>{
     const response = await fetch('/all')
     try{
@@ -62,12 +77,90 @@ const updateUI=async ()=>{
         document.querySelector('.city-name').innerHTML=alldata[i].name;
         document.querySelector('.temperature').innerHTML=alldata[i].temp;
         document.querySelector('.min-max-temp').innerHTML=`${alldata[i].min_temp}&deg;/${alldata[i].max_temp}&deg;`;
+        const timestamp = alldata[i].dt; // Assuming `data` is the fetched weather data object
+        const date = new Date(timestamp * 1000); // Convert timestamp to milliseconds
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // Months are zero-indexed, so add 1
+        const day = date.getDate();
+
+            document.querySelector('#date').innerHTML=`Date: ${year}-${month}-${day}`;
+            document.querySelector('#feel').innerHTML=`feel:${alldata[i].feeling}`;
+
+        if(isDayTime(alldata[i].dt,alldata[i].sunrise,alldata[i].sunset))
+        {
         switch(alldata[i].main)
         {
             case "Haze":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/cloudy.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/hazeday.jpg)"
+                break;
+            case "Thunderstorm":
                 document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/thunder.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/thunderstormday.jpg)"
+                break;
+            case "Drizzle":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/rainy-6.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/Drizzleday.jpg)"
+                break;
+            case "Rain":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/rainy-7.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/rainday.jpg)"
+                break;
+            case "Clear":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/day.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/clearday.jpg)"
+                break;
+            case "Clouds":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/cloudy.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/clouds-and-sun.png))"
+                break;
+            case "Snow":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/snowy-3.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/snowday.jpg)"
+                break;
+            default :
+                document.querySelector('.city-container img').src="images/haze.png";
+                document.querySelector('.city-container').style.backgroundImage="url(images/hazeday.jpg)"
                 break;
         }
+    }
+      else{
+        switch(alldata[i].main)
+        {
+            case "Haze":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/cloudy-night-1.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/hazenight.jpg)"
+                break;
+            case "Thunderstorm":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/thunder.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/thunderstormnight.jpg)"
+                break;
+            case "Drizzle":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/rainy-6.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/Drizzlenight.jpg)"
+                break;
+            case "Rain":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/rainy-7.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/rainnight.jpg)"
+                break;
+            case "Clear":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/night.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/clearnight.jpg)"
+                break;
+            case "Clouds":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/cloudy.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/clouds-and-sun.png))"
+                break;
+            case "Snow":
+                document.querySelector('.city-container img').src="images/amcharts_weather_icons_1.0.0/animated/snowy-3.svg";
+                document.querySelector('.city-container').style.backgroundImage="url(images/snownight.jpg)"
+                break;
+            default :
+                document.querySelector('.city-container img').src="images/haze.png";
+                document.querySelector('.city-container').style.backgroundImage="url(images/hazenight.jpg)"
+                break;
+        }
+      }
         i++;
 
     }
