@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weatherJournalApp</title>
+    <link rel="icon" type="image/x-icon" href="images/weather.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-title">
+    <i class="title-icon"><img src="images/amcharts_weather_icons_1.0.0/animated/weather.svg"></i><p class="title-content">weatherJournalApp</p>
+</div>
+<div class="search-box">
+    <input type="text" id="input"placeholder="enter a city name or pincode" value="">
+    <input type="text" id="input-text"placeholder="how are you feeling today" value="">
+    <button type="button" id="search-button"><img src="images/search-svgrepo-com.svg"><p>Generate</p></button>
+</div>
+
+
+<div class="city-container">
+    <h2 class="city-name">Jaipur</h2>
+    <img src="images/amcharts_weather_icons_1.0.0/animated/cloudy-day-1.svg">
+    <p class="temperature">31&deg;<sup>c</sup></p>
+    <p class="min-max-temp">cloudy 34&deg;/36&deg;</p>
+</p>
+</div>
+<div class="fiveday-forecast">
+    <h2>5-day forecast</h2>
+    <div class="five-days">
+        <div class="days" id="day1"><p>Yesterday</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+            <p class="max-temp">37&deg;</p>
+            <p class="min-temp">37&deg;</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+        </div>
+        <div class="days" id="day2"><p>Today</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+            <p class="max-temp">37&deg;</p>
+            <p class="min-temp">27&deg;</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+        </div>
+        <div class="days" id="day3"><p>Tomorrow</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+            <p class="max-temp">37&deg;</p>
+            <p class="min-temp">37&deg;</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+        </div>
+        <div class="days" id="day4"><p>Tue</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+            <p class="max-temp">37&deg;</p>
+            <p class="min-temp">37&deg;</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+        </div>
+        <div class="days" id="day5"><p>Wed</p>  
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+            <p class="max-temp">37&deg;</p>
+            <p class="min-temp">37&deg;</p>
+            <i><img src="images/amcharts_weather_icons_1.0.0/static/day.svg"></i>
+        </div>
+
+    </div>
+</div>
+
+</body>
+<script src="app.js"></script>
+</html>

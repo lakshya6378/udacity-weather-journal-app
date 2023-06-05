@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+   
+}
+
+  
+  body {
+    margin:2%;
+    background: linear-gradient(166deg, rgba(131,58,180,1) 0%, rgba(69,252,249,1) 100%);
+  }
+
+.page-title
+{
+    display: flex;
+    align-items: center;
+   
+}
+.title-content
+{
+    font-weight: bolder;
+    font-size: 120%;
+}
+.container
+{
+    
+}
+.search-box{
+    display: flex;
+    justify-content: center;
+    padding: 4%;
+}
+.search-box input{
+    color:#555;
+    padding:10px 25px;
+    height:60px;
+    border-radius: 30px ; 
+    flex: 0.7;
+    margin-right:10px;
+    font-size:18px;
+    border: 2px solid aqua;
+
+}
+.search-box button{
+    border-radius: 50%;
+    width:60px;
+    height:60px;
+    border: 2px solid aqua;
+}
+
+#search-button p{
+display:none;
+}
+.search-box img{
+    width:25px;
+    height:25px;
+}
+
+.city-container{
+    margin: auto;
+    text-align: center;
+    background-image: url(images/cloud-blue-sky.jpg);
+    background-position: center;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    
+    border-radius: 10px;
+}
+
+.city-container .city-name{
+    font-size: 200%;
+    color:#fff;
+}
+
+.city-container img{
+    width:150px;
+
+}
+
+.city-container .temperature{
+    font-size:250%;
+    color: #fff;
+    margin: 2px;
+}
+
+.city-container .min-max-temp{
+    font-weight:bold;
+}
+
+.fiveday-forecast{
+    margin:10px 4px;
+    
+    padding:2%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    
+}
+
+.fiveday-forecast h2{
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.five-days{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.days{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media(max-width:800px)
+{
+    .search-box{
+        flex-direction: column;
+        
+    }
+    .search-box #input,
+    #input-text{
+        margin-bottom: 8px;
+    }
+    #search-button img{
+        display: none;
+    }
+
+    #search-button p{
+         display: block;
+    }
+    #search-button{
+        margin: auto;
+        border-radius: 20px;
+        width: 100px;
+        height: 40px;
+        font-size: medium;
+    }
+}
+
+
