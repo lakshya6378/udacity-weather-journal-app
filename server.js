@@ -1,7 +1,8 @@
+import fetch from 'node-fetch';
 const express = require("express")
  const app = express()
  const bodyParser = require("body-parser")
-const fetch = require('node-fetch');
+
  app.use(bodyParser.urlencoded({extended: false}));
  app.use(bodyParser.json());
  const cors = require("cors");
