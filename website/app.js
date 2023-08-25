@@ -5,7 +5,7 @@ function performaction(e){
    getweatherdata(city)
    .then(function(data){
       const feeling=document.getElementById('input-text').value;
-      sendweatherdata('/sendweatherdata',{
+      sendweatherdata('https://weather-journal-app-b8nh.onrender.com/sendweatherdata',{
         name:data.name,
         temp:data.temp,
     min_temp:data.min_temp,
@@ -22,7 +22,7 @@ function performaction(e){
 }
 
 const getweatherdata = async (city)=>{
-     const response= await fetch(`/addweatherdata/${encodeURIComponent(city)}`)
+     const response= await fetch(`https://weather-journal-app-b8nh.onrender.com/addweatherdata/${encodeURIComponent(city)}`)
     //const response=await fetch("api.openweathermap.org/data/2.5/forecast?q=jaipur&appid=5b3f556adb4a2ae3aec7659b3cb25f41");
    
     try{
@@ -71,7 +71,7 @@ const sendweatherdata = async(url='',data={})=>{
   return currentDateTime > sunriseDateTime && currentDateTime < sunsetDateTime;
     }
 const updateUI=async ()=>{
-    const response = await fetch('/all')
+    const response = await fetch('https://weather-journal-app-b8nh.onrender.com/all')
     try{
         const alldata= await response.json()
         document.querySelector('.city-name').innerHTML=alldata[i].name;
